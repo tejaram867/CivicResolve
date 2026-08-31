@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Public Issues — CivicResolve</title>
+    <meta name="description" content="Explore reported public problems and follow their progress toward resolution." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body>
+    <header class="nav">
+      <div class="container nav__inner">
+        <a href="index.html" class="nav__brand"><span class="brand-mark"><i data-lucide="landmark"></i></span>CivicResolve</a>
+        <nav class="nav__links">
+          <a href="index.html">Home</a>
+          <a href="report.html">Report Issue</a>
+          <a href="issues.html">Public Issues</a>
+          <a href="index.html#how-it-works">How It Works</a>
+          <a href="dashboard.html">Dashboard</a>
+        </nav>
+        <div class="nav__cta">
+          <a href="dashboard.html" class="btn btn--ghost btn--sm">Login</a>
+          <a href="report.html" class="btn btn--primary btn--sm">Report a Public Issue</a>
+          <button class="nav__toggle" aria-label="Menu"><i data-lucide="menu"></i></button>
+        </div>
+      </div>
+      <div class="nav-drawer">
+        <a href="index.html">Home</a>
+        <a href="report.html">Report Issue</a>
+        <a href="issues.html">Public Issues</a>
+        <a href="index.html#how-it-works">How It Works</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="dashboard.html">Login</a>
+        <a href="report.html" class="btn btn--primary">Report a Public Issue</a>
+      </div>
+    </header>
+
+    <section class="page-header">
+      <div class="container">
+        <span class="eyebrow"><i data-lucide="eye"></i>Community Transparency</span>
+        <h1>Public Issues</h1>
+        <p>Explore reported problems and follow their progress toward resolution.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="filterbar mb-0" style="margin-bottom:28px">
+          <div class="filterbar__row">
+            <div class="filterbar__search">
+              <i data-lucide="search"></i>
+              <input type="text" id="f-search" class="form-control" placeholder="Search public issues..." />
+            </div>
+            <select id="f-category" class="form-control" aria-label="Filter by category">
+              <option value="">All Categories</option>
+              <option value="road">Road &amp; Infrastructure</option>
+              <option value="garbage">Garbage &amp; Waste</option>
+              <option value="drainage">Drainage</option>
+              <option value="water">Water Supply</option>
+              <option value="lighting">Street Lighting</option>
+              <option value="facilities">Public Facilities</option>
+            </select>
+            <select id="f-status" class="form-control" aria-label="Filter by status">
+              <option value="">All Status</option>
+              <option value="reported">Reported</option>
+              <option value="verified">Verified</option>
+              <option value="progress">In Progress</option>
+              <option value="critical">Critical</option>
+              <option value="resolved">Resolved</option>
+            </select>
+            <select id="f-severity" class="form-control" aria-label="Filter by severity">
+              <option value="">All Severity</option>
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+              <option value="critical">Critical</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid grid--3" id="issues-grid"></div>
+        <div id="issues-empty" style="display:none;text-align:center;padding:48px 0">
+          <i data-lucide="folder-open" style="font-size:2.4rem;color:var(--text-faint);margin-bottom:12px"></i>
+          <h3>No issues match your filters</h3>
+          <p>Try adjusting your search or clearing filters.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__bottom" style="border:none;padding:0">
+          <div class="footer__brand"><span class="brand-mark"><i data-lucide="landmark"></i></span>CivicResolve</div>
+          <p class="footer__tag" style="margin:0">"From Public Problems to Verified Resolution."</p>
+        </div>
+        <div class="divider" style="background:rgba(255,255,255,0.1);margin-top:18px"></div>
+        <div class="footer__bottom">
+          <span>© 2026 CivicResolve. All rights reserved.</span>
+          <span>Built for a smarter civic future.</span>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="./script.js"></script>
+  </body>
+</html>

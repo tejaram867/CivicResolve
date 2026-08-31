@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Citizen Dashboard — CivicResolve</title>
+    <meta name="description" content="Your civic contribution dashboard — reports, points, trust level, and resolution impact." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body>
+    <header class="nav">
+      <div class="container nav__inner">
+        <a href="index.html" class="nav__brand"><span class="brand-mark"><i data-lucide="landmark"></i></span>CivicResolve</a>
+        <nav class="nav__links">
+          <a href="index.html">Home</a>
+          <a href="report.html">Report Issue</a>
+          <a href="issues.html">Public Issues</a>
+          <a href="index.html#how-it-works">How It Works</a>
+          <a href="dashboard.html">Dashboard</a>
+        </nav>
+        <div class="nav__cta">
+          <a href="dashboard.html" class="btn btn--ghost btn--sm">Login</a>
+          <a href="report.html" class="btn btn--primary btn--sm">Report a Public Issue</a>
+          <button class="nav__toggle" aria-label="Menu"><i data-lucide="menu"></i></button>
+        </div>
+      </div>
+      <div class="nav-drawer">
+        <a href="index.html">Home</a>
+        <a href="report.html">Report Issue</a>
+        <a href="issues.html">Public Issues</a>
+        <a href="index.html#how-it-works">How It Works</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="dashboard.html">Login</a>
+        <a href="report.html" class="btn btn--primary">Report a Public Issue</a>
+      </div>
+    </header>
+
+    <section class="page-header">
+      <div class="container">
+        <span class="eyebrow"><i data-lucide="layout-dashboard"></i>Your Civic Profile</span>
+        <h1>Welcome back, Citizen 👋</h1>
+        <p>Track your reports, civic points, and contribution to community resolution.</p>
+      </div>
+    </section>
+
+    <section class="section--tight" style="padding-top:48px" id="dash-root">
+      <div class="container">
+        <div class="grid grid--4">
+          <div class="stat reveal"><div class="stat__num"><span data-count="12">0</span></div><div class="stat__label">Reports Submitted</div></div>
+          <div class="stat reveal"><div class="stat__num"><span data-count="9">0</span></div><div class="stat__label">Verified</div></div>
+          <div class="stat reveal"><div class="stat__num"><span data-count="6">0</span></div><div class="stat__label">Resolved</div></div>
+          <div class="stat reveal"><div class="stat__num"><span data-count="285">0</span></div><div class="stat__label">Civic Points</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section--tight" style="padding-top:20px">
+      <div class="container">
+        <div class="grid grid--2">
+          <!-- My reports -->
+          <div class="card" style="padding:28px">
+            <h2 style="font-size:1.4rem;margin-bottom:6px">My Reports</h2>
+            <p class="muted" style="margin-bottom:20px;font-size:0.9rem">Your submitted public issues and their status.</p>
+            <div style="overflow:hidden;border-radius:var(--radius-sm);border:1px solid var(--border)">
+              <table class="tbl">
+                <thead>
+                  <tr><th>Issue</th><th>Category</th><th>Status</th><th>Points</th></tr>
+                </thead>
+                <tbody id="my-reports-body"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Civic contribution -->
+          <div class="card" style="padding:28px">
+            <h2 style="font-size:1.4rem;margin-bottom:6px">Civic Contribution Score</h2>
+            <p class="muted" style="margin-bottom:20px;font-size:0.9rem">Your reputation as an active community member.</p>
+            <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:10px">
+              <span style="font-size:2.2rem;font-weight:800;color:var(--navy-deep)">87</span>
+              <span class="muted">/ 100</span>
+            </div>
+            <div class="progress" style="margin-bottom:14px"><div class="progress__bar" id="score-bar" style="width:0%"></div></div>
+            <div style="margin-bottom:20px"><span class="badge badge--verified"><i data-lucide="medal"></i>Trust Level: Active Contributor</span></div>
+            <h4 style="margin-bottom:12px">Badges Earned</h4>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <div class="ach"><div class="ach__icon"><i data-lucide="badge-check"></i></div><div class="ach__text">Verified Reporter</div></div>
+              <div class="ach"><div class="ach__icon"><i data-lucide="search-check"></i></div><div class="ach__text">Community Verifier</div></div>
+              <div class="ach"><div class="ach__icon"><i data-lucide="trophy"></i></div><div class="ach__text">Resolution Contributor</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section--tight section--alt" style="padding-top:40px">
+      <div class="container">
+        <div class="grid grid--2">
+          <!-- Reward breakdown -->
+          <div class="card" style="padding:28px">
+            <h2 style="font-size:1.4rem;margin-bottom:6px">Reward Breakdown</h2>
+            <p class="muted" style="margin-bottom:18px;font-size:0.9rem">Points earned from verified civic contributions.</p>
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px">
+              <span style="font-size:1.6rem;font-weight:800;color:var(--teal-deep)">Current Points: 285</span>
+            </div>
+            <h4 style="margin-bottom:12px">Recent Activity</h4>
+            <div id="reward-list" style="display:flex;flex-direction:column;gap:10px"></div>
+          </div>
+
+          <!-- Analytics -->
+          <div class="card" style="padding:28px">
+            <h2 style="font-size:1.4rem;margin-bottom:6px">Analytics</h2>
+            <p class="muted" style="margin-bottom:20px;font-size:0.9rem">Your reporting impact at a glance.</p>
+
+            <h4 style="margin-bottom:14px">Reports by Category</h4>
+            <div class="barchart" style="margin-bottom:24px">
+              <div class="bar-row"><span class="bar-row__label">Road</span><div class="bar-row__track"><div class="bar-row__fill" data-val="68"></div></div><span class="bar-row__val">5</span></div>
+              <div class="bar-row"><span class="bar-row__label">Garbage</span><div class="bar-row__track"><div class="bar-row__fill" data-val="42"></div></div><span class="bar-row__val">3</span></div>
+              <div class="bar-row"><span class="bar-row__label">Drainage</span><div class="bar-row__track"><div class="bar-row__fill" data-val="28"></div></div><span class="bar-row__val">2</span></div>
+              <div class="bar-row"><span class="bar-row__label">Water</span><div class="bar-row__track"><div class="bar-row__fill" data-val="14"></div></div><span class="bar-row__val">1</span></div>
+            </div>
+
+            <h4 style="margin-bottom:14px">Resolution Rate</h4>
+            <div class="circ">
+              <svg width="160" height="160">
+                <circle class="circ__track" cx="80" cy="80" r="70" fill="none" stroke-width="12" />
+                <circle id="circ-bar" class="circ__bar" cx="80" cy="80" r="70" fill="none" stroke-width="12" stroke-dasharray="440" stroke-dashoffset="440" />
+              <defs>
+                <linearGradient id="circ-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#14b8a6" />
+                  <stop offset="100%" stop-color="#0ea5e9" />
+                </linearGradient>
+              </defs>
+              </svg>
+              <div class="circ__num" id="circ-num">0%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__bottom" style="border:none;padding:0">
+          <div class="footer__brand"><span class="brand-mark"><i data-lucide="landmark"></i></span>CivicResolve</div>
+          <p class="footer__tag" style="margin:0">"From Public Problems to Verified Resolution."</p>
+        </div>
+        <div class="divider" style="background:rgba(255,255,255,0.1);margin-top:18px"></div>
+        <div class="footer__bottom">
+          <span>© 2026 CivicResolve. All rights reserved.</span>
+          <span>Built for a smarter civic future.</span>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="./script.js"></script>
+  </body>
+</html>

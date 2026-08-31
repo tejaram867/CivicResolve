@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Report a Public Issue — CivicResolve</title>
+    <meta name="description" content="Report a public infrastructure problem. CivicResolve uses AI to classify, prioritize, and route your report to the right authority." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body>
+    <header class="nav">
+      <div class="container nav__inner">
+        <a href="index.html" class="nav__brand"><span class="brand-mark"><i data-lucide="landmark"></i></span>CivicResolve</a>
+        <nav class="nav__links">
+          <a href="index.html">Home</a>
+          <a href="report.html">Report Issue</a>
+          <a href="issues.html">Public Issues</a>
+          <a href="index.html#how-it-works">How It Works</a>
+          <a href="dashboard.html">Dashboard</a>
+        </nav>
+        <div class="nav__cta">
+          <a href="dashboard.html" class="btn btn--ghost btn--sm">Login</a>
+          <a href="report.html" class="btn btn--primary btn--sm">Report a Public Issue</a>
+          <button class="nav__toggle" aria-label="Menu"><i data-lucide="menu"></i></button>
+        </div>
+      </div>
+      <div class="nav-drawer">
+        <a href="index.html">Home</a>
+        <a href="report.html">Report Issue</a>
+        <a href="issues.html">Public Issues</a>
+        <a href="index.html#how-it-works">How It Works</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="dashboard.html">Login</a>
+        <a href="report.html" class="btn btn--primary">Report a Public Issue</a>
+      </div>
+    </header>
+
+    <section class="page-header">
+      <div class="container">
+        <span class="eyebrow"><i data-lucide="megaphone"></i>Citizen Reporting</span>
+        <h1>Report a Public Issue</h1>
+        <p>Help your community identify and resolve problems that affect public spaces.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container" style="max-width:780px">
+        <form id="report-form" class="card" style="padding:32px" novalidate>
+          <h2 style="margin-bottom:6px">Issue Information</h2>
+          <p class="muted" style="margin-bottom:24px;font-size:0.92rem">Fields marked with <span style="color:var(--red-bright)">*</span> are required.</p>
+
+          <div class="form-group">
+            <label class="form-label" for="title">Issue Title <span class="req">*</span></label>
+            <input type="text" id="title" class="form-control" placeholder="Large pothole near school entrance" />
+            <div class="form-hint">Describe the problem in a few words.</div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="category">Category <span class="req">*</span></label>
+              <select id="category" class="form-control">
+                <option value="">Select a category...</option>
+                <option value="road">Road &amp; Infrastructure</option>
+                <option value="garbage">Garbage &amp; Waste</option>
+                <option value="drainage">Drainage</option>
+                <option value="water">Water Supply</option>
+                <option value="lighting">Street Lighting</option>
+                <option value="facilities">Public Facilities</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Severity <span class="req">*</span></label>
+              <div class="sev-pills">
+                <button type="button" class="sev-pill" data-sev="low">Low</button>
+                <button type="button" class="sev-pill is-active" data-sev="medium">Medium</button>
+                <button type="button" class="sev-pill" data-sev="high">High</button>
+                <button type="button" class="sev-pill" data-sev="critical">Critical</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="description">Description <span class="req">*</span></label>
+            <textarea id="description" class="form-control" placeholder="Describe what you observed. Include size, danger to public, and how long it has been there."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Upload Evidence</label>
+            <div class="dropzone" id="dropzone" tabindex="0">
+              <div class="dropzone__icon"><i data-lucide="camera"></i></div>
+              <div class="dropzone__main">Upload Photo / Video</div>
+              <div class="dropzone__sub">Drag &amp; drop or browse files (max 4 images)</div>
+              <input type="file" id="file-input" accept="image/*" multiple hidden />
+              <div class="dropzone__preview" id="drop-preview"></div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Location</label>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px">
+              <button type="button" class="btn btn--ghost btn--sm" id="use-location"><i data-lucide="locate-fixed"></i>Use My Location</button>
+            </div>
+            <input type="text" id="location" class="form-control" placeholder="Enter location" />
+          </div>
+
+          <button type="submit" class="btn btn--primary btn--lg btn--block"><i data-lucide="cpu"></i>Analyze &amp; Submit Issue</button>
+        </form>
+
+        <div id="result-zone" style="margin-top:24px"></div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__bottom" style="border:none;padding:0">
+          <div class="footer__brand"><span class="brand-mark"><i data-lucide="landmark"></i></span>CivicResolve</div>
+          <p class="footer__tag" style="margin:0">"From Public Problems to Verified Resolution."</p>
+        </div>
+        <div class="divider" style="background:rgba(255,255,255,0.1);margin-top:18px"></div>
+        <div class="footer__bottom">
+          <span>© 2026 CivicResolve. All rights reserved.</span>
+          <span>Built for a smarter civic future.</span>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="./script.js"></script>
+  </body>
+</html>
